@@ -6,86 +6,146 @@
 }
 
 body {
-    background-color: #0d0f12;
-    color: #e0d7c6;
+    background-color: #090a0f;
+    color: #e6dfd3;
     font-family: 'Noto Serif TC', serif;
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 15px;
 }
 
 .app-container {
     width: 100%;
-    max-width: 414px; /* 完美符合 iPhone 螢幕寬度 */
-    text-align: center;
+    max-width: 450px; /* 針對 iPhone 最佳化寬度 */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 header h1 {
-    font-size: 1.8rem;
-    color: #d4af37; /* 質感金色 */
-    margin-bottom: 5px;
-    letter-spacing: 2px;
+    font-size: 1.6rem;
+    color: #d4af37;
+    letter-spacing: 3px;
 }
 
 .subtitle {
+    font-size: 0.8rem;
+    color: #8c8575;
+    margin-top: 5px;
+}
+
+/* 控制面板 */
+.control-panel {
+    background: rgba(20, 22, 30, 0.7);
+    border: 1px solid #2a2d3d;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.select-wrapper {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     font-size: 0.9rem;
-    color: #8a8273;
-    margin-bottom: 30px;
+}
+
+select {
+    background-color: #151821;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: 'Noto Serif TC', serif;
+    outline: none;
 }
 
 .btn {
-    background: linear-gradient(135deg, #8a2be2, #4a0e4e);
+    background: linear-gradient(135deg, #631b9e, #310736);
     color: white;
     border: 1px solid #d4af37;
-    padding: 12px 40px;
+    width: 100%;
+    padding: 12px;
     font-size: 1rem;
     border-radius: 25px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     font-family: 'Noto Serif TC', serif;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .btn:active {
-    transform: scale(0.95);
+    transform: scale(0.98);
 }
 
+/* --- 動態牌陣排版系統 --- */
 .card-spread {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    gap: 10px;
+    margin-bottom: 25px;
+    min-height: 200px;
 }
 
+/* 1. 單張牌陣 */
+.single-layout {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+.single-layout .card-slot {
+    width: 120px;
+}
+
+/* 2. 聖三角牌陣 (橫向三張) */
+.triangle-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+/* 3. 凱爾特十字牌陣 (精簡網格版，適合手機瀏覽) */
+.celtic-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+.celtic-layout .card-slot {
+    background: rgba(255,255,255,0.02);
+    padding: 4px;
+    border-radius: 6px;
+}
+
+/* 卡牌基礎元件 */
 .card-slot {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .slot-title {
-    font-size: 0.8rem;
-    color: #8a8273;
-    margin-bottom: 10px;
+    font-size: 0.7rem;
+    color: #8c8575;
+    margin-bottom: 5px;
+    white-space: nowrap;
 }
 
-/* 翻牌 3D 動畫效果 */
 .card {
     width: 100%;
-    aspect-ratio: 2 / 3.5;
+    aspect-ratio: 2 / 3.4;
     perspective: 1000px;
-    cursor: pointer;
 }
 
 .card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
+    transition: transform 0.5s;
     transform-style: preserve-3d;
 }
 
@@ -99,39 +159,70 @@ header h1 {
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border-radius: 8px;
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 4px;
 }
 
-/* 牌背：神秘線條 */
+/* 牌背 */
 .card-front {
-    background: radial-gradient(#1a1c23, #0f1115);
-    border: 2px solid #d4af37;
+    background: radial-gradient(#161922, #0a0b10);
+    border: 1.5px solid #d4af37;
     color: #d4af37;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
-/* 牌面：翻開後的樣式 */
+/* 牌面 */
 .card-back {
-    background-color: #f4f1ea;
-    border: 2px solid #333;
+    background: linear-gradient(135deg, #fdfbf7, #eae5d9);
+    border: 1.5px solid #222;
     color: #111;
     transform: rotateY(180deg);
-    font-size: 0.85rem;
+    text-align: center;
+}
+
+.card-name {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #111;
+}
+
+.card-orient {
+    font-size: 0.65rem;
+    margin-top: 2px;
     font-weight: bold;
 }
 
+/* 解牌專區 */
 .interpretation-zone {
-    margin-top: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
+    background: rgba(20, 22, 30, 0.9);
+    border-top: 2px solid #d4af37;
+    border-radius: 12px 12px 0 0;
     padding: 15px;
-    min-height: 80px;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    margin-top: auto; /* 讓它貼在底部 */
+    min-height: 130px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+}
+
+.interpretation-zone h3 {
+    font-size: 1rem;
     color: #d4af37;
+    margin-bottom: 8px;
+}
+
+.interpretation-zone p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #bfae93;
+}
+
+.active-detail {
+    border: 1px dashed #d4af37;
+    padding: 8px;
+    margin-top: 8px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 6px;
 }
