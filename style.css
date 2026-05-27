@@ -17,7 +17,7 @@ body {
 
 .app-container {
     width: 100%;
-    max-width: 450px; /* 針對 iPhone 最佳化寬度 */
+    max-width: 450px;
     display: flex;
     flex-direction: column;
 }
@@ -25,6 +25,7 @@ body {
 header {
     margin-top: 10px;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 header h1 {
@@ -39,21 +40,68 @@ header h1 {
     margin-top: 5px;
 }
 
-/* 控制面板 */
+.api-box {
+    margin-bottom: 10px;
+}
+
+.api-box input {
+    width: 100%;
+    background: #11141d;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-align: center;
+    outline: none;
+}
+
+.api-box input:focus {
+    border-color: #d4af37;
+}
+
 .control-panel {
     background: rgba(20, 22, 30, 0.7);
     border: 1px solid #2a2d3d;
     padding: 15px;
     border-radius: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.input-wrapper {
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.input-wrapper label {
+    font-size: 0.85rem;
+    color: #d4af37;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#client-question {
+    width: 100%;
+    background: #151821;
+    border: 1px solid #444;
+    color: #e6dfd3;
+    padding: 8px;
+    border-radius: 6px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.9rem;
+    resize: none;
+    outline: none;
+}
+
+#client-question:focus {
+    border-color: #d4af37;
 }
 
 .select-wrapper {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
     font-size: 0.9rem;
 }
 
@@ -68,7 +116,7 @@ select {
 }
 
 .btn {
-    background: linear-gradient(135deg, #631b9e, #310736);
+    background: linear-gradient(135deg, #44146f, #220526);
     color: white;
     border: 1px solid #d4af37;
     width: 100%;
@@ -79,150 +127,95 @@ select {
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     font-family: 'Noto Serif TC', serif;
     font-weight: bold;
-    letter-spacing: 1px;
+    transition: all 0.2s;
 }
 
 .btn:active {
     transform: scale(0.98);
 }
 
+.action-zone {
+    margin: 5px 0 15px 0;
+}
+
+.ai-btn {
+    background: linear-gradient(135deg, #c79216, #6b4c03);
+    color: #fff;
+    border: 1px solid #fff;
+}
+
 /* --- 動態牌陣排版系統 --- */
 .card-spread {
     margin-bottom: 25px;
-    min-height: 200px;
+    min-height: 150px;
 }
 
-/* 1. 單張牌陣 */
-.single-layout {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-}
-.single-layout .card-slot {
-    width: 120px;
-}
+.single-layout { display: flex; justify-content: center; padding: 10px 0; }
+.single-layout .card-slot { width: 120px; }
 
-/* 2. 聖三角牌陣 (橫向三張) */
-.triangle-layout {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-}
+.triangle-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 
-/* 3. 凱爾特十字牌陣 (精簡網格版，適合手機瀏覽) */
-.celtic-layout {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-}
-.celtic-layout .card-slot {
-    background: rgba(255,255,255,0.02);
-    padding: 4px;
-    border-radius: 6px;
-}
+.celtic-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.celtic-layout .card-slot { background: rgba(255,255,255,0.02); padding: 4px; border-radius: 6px; }
 
-/* 卡牌基礎元件 */
-.card-slot {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+.card-slot { display: flex; flex-direction: column; align-items: center; }
+.slot-title { font-size: 0.7rem; color: #8c8575; margin-bottom: 5px; white-space: nowrap; }
 
-.slot-title {
-    font-size: 0.7rem;
-    color: #8c8575;
-    margin-bottom: 5px;
-    white-space: nowrap;
-}
+.card { width: 100%; aspect-ratio: 2 / 3.4; perspective: 1000px; cursor: pointer; }
+.card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s; transform-style: preserve-3d; }
+.card.flipped .card-inner { transform: rotateY(180deg); }
 
-.card {
-    width: 100%;
-    aspect-ratio: 2 / 3.4;
-    perspective: 1000px;
+.card-front, .card-back { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden; 
+    border-radius: 6px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
 }
+.card-front { background: radial-gradient(#161922, #0a0b10); border: 1.5px solid #d4af37; color: #d4af37; font-size: 1.2rem; }
+.card-back { background: linear-gradient(135deg, #fdfbf7, #eae5d9); border: 1.5px solid #222; color: #111; transform: rotateY(180deg); text-align: center; padding: 4px; }
 
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s;
-    transform-style: preserve-3d;
-}
+.card-name { font-size: 0.8rem; font-weight: bold; line-height: 1.2; }
+.card-orient { font-size: 0.65rem; margin-top: 4px; font-weight: bold; }
 
-.card.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 4px;
-}
-
-/* 牌背 */
-.card-front {
-    background: radial-gradient(#161922, #0a0b10);
-    border: 1.5px solid #d4af37;
-    color: #d4af37;
-    font-size: 1.2rem;
-}
-
-/* 牌面 */
-.card-back {
-    background: linear-gradient(135deg, #fdfbf7, #eae5d9);
-    border: 1.5px solid #222;
-    color: #111;
-    transform: rotateY(180deg);
-    text-align: center;
-}
-
-.card-name {
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: #111;
-}
-
-.card-orient {
-    font-size: 0.65rem;
-    margin-top: 2px;
-    font-weight: bold;
-}
-
-/* 解牌專區 */
 .interpretation-zone {
     background: rgba(20, 22, 30, 0.9);
-    border-top: 2px solid #d4af37;
-    border-radius: 12px 12px 0 0;
-    padding: 15px;
-    margin-top: auto; /* 讓它貼在底部 */
-    min-height: 130px;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+.interpretation-zone h3 { font-size: 0.95rem; color: #d4af37; margin-bottom: 5px; }
+.interpretation-zone p { font-size: 0.8rem; color: #bfae93; }
+.active-detail { border: 1px dashed #d4af37; padding: 8px; margin-top: 8px; background: rgba(212, 175, 55, 0.05); border-radius: 6px; font-size: 0.85rem;}
+
+/* AI 回應專區 */
+.ai-response-zone {
+    background: linear-gradient(180deg, #11141e, #090a0f);
+    border: 1px solid #d4af37;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
-.interpretation-zone h3 {
-    font-size: 1rem;
+.ai-response-zone h3 {
+    font-size: 1.1rem;
     color: #d4af37;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #3a321d;
+    padding-bottom: 8px;
 }
 
-.interpretation-zone p {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: #bfae93;
-}
-
-.active-detail {
-    border: 1px dashed #d4af37;
-    padding: 8px;
-    margin-top: 8px;
-    background: rgba(212, 175, 55, 0.05);
-    border-radius: 6px;
+.ai-content {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #e6dfd3;
+    text-align: left;
+    white-space: pre-line;
 }
