@@ -3,55 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>塔羅占卜輔助工具</title>
+    <title>專業塔羅占卜師輔助系統</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <header>
-            <h1>神秘學塔羅占卜</h1>
-            <p class="subtitle">靜心冥想你的問題，然後點擊洗牌</p>
+            <h1>神祕學塔羅占卜</h1>
+            <p class="subtitle">專業版 78 掌全牌組輔助系統</p>
         </header>
 
         <div class="control-panel">
+            <div class="select-wrapper">
+                <label for="spread-select">選擇牌陣：</label>
+                <select id="spread-select">
+                    <option value="single">單張直覺占卜 (每日導引)</option>
+                    <option value="triangle" selected>時間聖三角 (過去/現在/未來)</option>
+                    <option value="celtic">凱爾特十字 (10張深度解析)</option>
+                </select>
+            </div>
             <button id="shuffle-btn" class="btn">靈性洗牌</button>
         </div>
 
-        <div class="card-spread">
-            <div class="card-slot">
-                <span class="slot-title">過去 (Past)</span>
-                <div class="card" id="card-0" onclick="flipCard(0)">
-                    <div class="card-inner">
-                        <div class="card-front">?</div>
-                        <div class="card-back" id="back-0"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card-slot">
-                <span class="slot-title">現在 (Present)</span>
-                <div class="card" id="card-1" onclick="flipCard(1)">
-                    <div class="card-inner">
-                        <div class="card-front">?</div>
-                        <div class="card-back" id="back-1"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-slot">
-                <span class="slot-title">未來 (Future)</span>
-                <div class="card" id="card-2" onclick="flipCard(2)">
-                    <div class="card-inner">
-                        <div class="card-front">?</div>
-                        <div class="card-back" id="back-2"></div>
-                    </div>
-                </div>
-            </div>
+        <!-- 動態牌陣容器 (由 JS 根據選擇切換排版) -->
+        <div class="card-spread triangle-layout" id="card-spread-container">
+            <!-- 卡牌會由 JavaScript 動態生成 -->
         </div>
 
+        <!-- 點擊特定卡牌時，會在這裡顯示該位置的深度牌意 -->
         <div id="interpretation-zone" class="interpretation-zone">
-            </div>
+            <h3>系統已就緒</h3>
+            <p>請選擇牌陣，點擊「靈性洗牌」後開始占卜。</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
