@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2566">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-TW"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;塔羅占卜輔助工具&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="style.css"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="app-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;神秘學塔羅占卜&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="subtitle"&gt;靜心冥想你的問題，然後點擊洗牌&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="control-panel"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="shuffle-btn" class="btn"&gt;靈性洗牌&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-spread"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card-slot"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="slot-title"&gt;過去 (Past)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card" id="card-0" onclick="flipCard(0)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="card-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="card-front"&gt;?&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="card-back" id="back-0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card-slot"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="slot-title"&gt;現在 (Present)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card" id="card-1" onclick="flipCard(1)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="card-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="card-front"&gt;?&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="card-back" id="back-1"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card-slot"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="slot-title"&gt;未來 (Future)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card" id="card-2" onclick="flipCard(2)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="card-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="card-front"&gt;?&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="card-back" id="back-2"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="interpretation-zone" class="interpretation-zone"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="script.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
