@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>專業塔羅占卜師輔助系統</title>
+    <title>AI 廣東話專業塔羅占卜師系統</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -11,10 +11,19 @@
     <div class="app-container">
         <header>
             <h1>神祕學塔羅占卜</h1>
-            <p class="subtitle">專業版 78 掌全牌組輔助系統</p>
+            <p class="subtitle">AI 數位大師聯名版 (香港直連)</p>
         </header>
 
+        <div class="api-box">
+            <input type="password" id="api-key-input" placeholder="請在此貼上你的 OpenRouter API Key">
+        </div>
+
         <div class="control-panel">
+            <div class="input-wrapper">
+                <label for="client-question">問卜者心中的問題：</label>
+                <textarea id="client-question" placeholder="例如：問感情，想知同心儀對象整體情形，三月會唔會主動表白？" rows="2"></textarea>
+            </div>
+
             <div class="select-wrapper">
                 <label for="spread-select">選擇牌陣：</label>
                 <select id="spread-select">
@@ -26,15 +35,21 @@
             <button id="shuffle-btn" class="btn">靈性洗牌</button>
         </div>
 
-        <!-- 動態牌陣容器 (由 JS 根據選擇切換排版) -->
         <div class="card-spread triangle-layout" id="card-spread-container">
-            <!-- 卡牌會由 JavaScript 動態生成 -->
+            </div>
+
+        <div class="action-zone">
+            <button id="ai-btn" class="btn ai-btn">✨ 召喚 AI 數位大師廣東話解牌</button>
         </div>
 
-        <!-- 點擊特定卡牌時，會在這裡顯示該位置的深度牌意 -->
         <div id="interpretation-zone" class="interpretation-zone">
             <h3>系統已就緒</h3>
-            <p>請選擇牌陣，點擊「靈性洗牌」後開始占卜。</p>
+            <p>請輸入問題，選擇牌陣並點擊「靈性洗牌」。</p>
+        </div>
+
+        <div id="ai-response-zone" class="ai-response-zone" style="display: none;">
+            <h3>🔮 AI 大師深度解讀：</h3>
+            <div id="ai-content" class="ai-content">等待大師開示...</div>
         </div>
     </div>
 
