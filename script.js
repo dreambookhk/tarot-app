@@ -1,4 +1,6 @@
-// 完整的 78 張塔羅牌庫與核心占卜心法
+// ==========================================
+// 1. 完整 78 張塔羅牌庫與核心關鍵字
+// ==========================================
 const tarotDeck = [
     // 大阿爾克那 (0-21)
     { name: "愚者", upright: "新起點、冒險、純真、自由", reverse: "輕率、魯莽、逃避、不負責任" },
@@ -24,7 +26,7 @@ const tarotDeck = [
     { name: "審判", upright: "覺醒、重大決定、重生、因果召喚", reverse: "自我懷疑、拒絕召喚、錯失良機" },
     { name: "世界", upright: "圓滿、達成目標、旅程結束、完美融入", reverse: "未竟之功、缺乏突破、差最後一步" },
     
-    // 小阿爾克那 - 權杖 (火元素：行動、事業)
+    // 小阿爾克那 - 權杖
     { name: "權杖一", upright: "新計畫、熱情行動、靈感萌芽", reverse: "缺乏動力、計畫延誤、三分鐘熱度" },
     { name: "權杖二", upright: "規劃未來、抉擇、海外拓展", reverse: "猶豫不決、安全感不足、目光短淺" },
     { name: "權杖三", upright: "遠見、合作成功、擴張版圖", reverse: "期待落空、團隊不和、遭遇瓶頸" },
@@ -40,7 +42,7 @@ const tarotDeck = [
     { name: "權杖皇后", upright: "自信、熱情、大方、具影響力的女性", reverse: "嫉妒心強、情緒化、過度掌控" },
     { name: "權杖國王", upright: "領袖魅力、遠見、掌控大局的決策者", reverse: "獨裁、衝動、嚴厲無情" },
 
-    // 小阿爾克那 - 聖杯 (水元素：情感、直覺)
+    // 小阿爾克那 - 聖杯
     { name: "聖杯一", upright: "新感情、愛滿溢、情緒覺醒", reverse: "情感壓抑、錯失真愛、情緒化" },
     { name: "聖杯二", upright: "戀情萌芽、平等合作、和諧契合", reverse: "關係裂痕、溝通不良、利益衝突" },
     { name: "聖杯三", upright: "慶祝、社交聚會、友誼長存", reverse: "三人行糾紛、過度放縱、小團體排外" },
@@ -56,7 +58,7 @@ const tarotDeck = [
     { name: "聖杯皇后", upright: "溫柔體貼、同理心、直覺敏銳的女性", reverse: "過度敏感、情緒化、過度依賴" },
     { name: "聖杯國王", upright: "情感穩定、成熟智慧、具同理心的導師", reverse: "情感勒索、虛偽、善於操控人心" },
 
-    // 小阿爾克那 - 寶劍 (風元素：思想、衝突)
+    // 小阿爾克那 - 寶劍
     { name: "寶劍一", upright: "理智突破、思想清晰、關鍵勝利", reverse: "混亂迷茫、誤用權力、計畫難產" },
     { name: "寶劍二", upright: "僵局、逃避抉擇、內心拉扯", reverse: "打破僵局、看清真相、被迫抉擇" },
     { name: "寶劍三", upright: "心碎、背叛、情感傷痛", reverse: "傷口癒合、釋懷、走出陰霾" },
@@ -72,7 +74,7 @@ const tarotDeck = [
     { name: "寶劍皇后", upright: "獨立理智、言詞犀利、洞察力極強的女性", reverse: "刻薄寡情、怨婦心態、偏激不公" },
     { name: "寶劍國王", upright: "絕對理智、專業權威、公正冷靜的裁判", reverse: "冷酷無情、偏見獨裁、思維僵化" },
 
-    // 小阿爾克那 - 錢幣 (土元素：物質、顯化)
+    // 小阿爾克那 - 錢幣
     { name: "錢幣一", upright: "財富新契機、物質豐碩、務實基礎", reverse: "投資失利、浪費資源、時機未到" },
     { name: "錢幣二", upright: "尋求平衡、資金周轉、多工處理", reverse: "失衡、超支、分心導致失敗" },
     { name: "錢幣三", upright: "團隊合作、專業技術、初見成效", reverse: "缺乏默契、偷工減料、技術不精" },
@@ -86,29 +88,21 @@ const tarotDeck = [
     { name: "錢幣侍從", upright: "務實好學、儲蓄、踏實發展的年輕人", reverse: "眼高手低、愛慕虛榮、浪費金錢" },
     { name: "錢幣騎士", upright: "穩健可靠、勤奮務實、效率驚人", reverse: "墨守成規、停滯不前、過度現實" },
     { name: "錢幣皇后", upright: "高貴務實、善於理財、溫暖豐盛的女性", reverse: "過度拜金、不安全感、生活失衡" },
-    { name: "錢幣國王", upright: "商業帝國、富足權威、務實的成功領袖", reverse: "唯利是圖、固執守舊、財務危機" }
+    { name: "錢幣國王", upright: "商業帝國、富足權威、務實的成功領袖", reverse: "唯利一圖、固執守舊、財務危機" }
 ];
 
-// 牌陣配置定義
+// 2. 牌陣定義配置
 const spreads = {
-    single: [
-        { title: "核心導引 (Guidance)" }
-    ],
+    single: [{ title: "核心導引 (Guidance)" }],
     triangle: [
         { title: "過去 (Past)" },
         { title: "現在 (Present)" },
         { title: "未來 (Future)" }
     ],
     celtic: [
-        { title: "1. 現狀/核心" },
-        { title: "2. 阻礙/助力" },
-        { title: "3. 潛意識/根基" },
-        { title: "4. 過去/已發生" },
-        { title: "5. 意識/目標" },
-        { title: "6. 即將到來" },
-        { title: "7. 當事人狀態" },
-        { title: "8. 周遭環境" },
-        { title: "9. 期望或恐懼" },
+        { title: "1. 現狀/核心" }, { title: "2. 阻礙/助力" }, { title: "3. 潛意識/根基" },
+        { title: "4. 過去/已發生" }, { title: "5. 意識/目標" }, { title: "6. 即將到來" },
+        { title: "7. 當事人狀態" }, { title: "8. 周遭環境" }, { title: "9. 期望或恐懼" },
         { title: "10. 最終結果" }
     ]
 };
@@ -118,23 +112,21 @@ let flippedState = [];
 
 document.getElementById('shuffle-btn').addEventListener('click', doShuffle);
 document.getElementById('spread-select').addEventListener('change', initSpreadLayout);
+document.getElementById('ai-btn').addEventListener('click', callAIInterpretation);
 
-// 動態初始化牌陣排版
 function initSpreadLayout() {
     const spreadType = document.getElementById('spread-select').value;
     const container = document.getElementById('card-spread-container');
     const interpretationZone = document.getElementById('interpretation-zone');
     
-    // 清空舊樣式
     container.className = `card-spread ${spreadType}-layout`;
     container.innerHTML = "";
+    interpretationZone.innerHTML = `<h3>已切換至：${document.getElementById('spread-select').selectedOptions[0].text}</h3><p>請輸入問題，並點擊下方「靈性洗牌」。</p>`;
     
-    interpretationZone.innerHTML = `<h3>已切換至：${document.getElementById('spread-select').selectedOptions[0].text}</h3><p>請點擊下方「靈性洗牌」按鈕，注入當下意念能量。</p>`;
-    
+    document.getElementById('ai-response-zone').style.display = 'none';
     currentSpreadCards = [];
     flippedState = [];
 
-    // 動態建構 HTML
     spreads[spreadType].forEach((slot, idx) => {
         const slotDiv = document.createElement('div');
         slotDiv.className = 'card-slot';
@@ -152,40 +144,33 @@ function initSpreadLayout() {
     });
 }
 
-// 核心洗牌演算法
 function doShuffle() {
     const spreadType = document.getElementById('spread-select').value;
     const currentSlots = spreads[spreadType];
     
-    // 重置所有卡牌視覺
     currentSlots.forEach((_, idx) => {
         const el = document.getElementById(`tarot-card-${idx}`);
         if(el) el.classList.remove('flipped');
         flippedState[idx] = false;
     });
 
-    // 隨機抽取 78 張牌中的 N 張
     let fullShuffled = [...tarotDeck].sort(() => 0.5 - Math.random());
     currentSpreadCards = [];
 
     for (let i = 0; i < currentSlots.length; i++) {
-        const isUpright = Math.random() > 0.45; // 稍微調高正位率，貼近真實洗牌手感
+        const isUpright = Math.random() > 0.45;
         currentSpreadCards.push({
             ...fullShuffled[i],
             orientation: isUpright ? "正位" : "逆位"
         });
     }
 
-    document.getElementById('interpretation-zone').innerHTML = `<h3>能量場已就緒</h3><p>牌陣中包含 78 張洗牌結果。請占卜師引導客戶，依序點選上方卡牌進行翻牌解讀。</p>`;
+    document.getElementById('interpretation-zone').innerHTML = `<h3>能量場已就緒</h3><p>請依序點選上方卡牌進行翻牌。完成後點擊下方按鈕進行 AI 廣東話深度解牌。</p>`;
+    document.getElementById('ai-response-zone').style.display = 'none';
 }
 
-// 處理點擊翻牌與呈現解牌心法
 function handleCardClick(index) {
-    if (currentSpreadCards.length === 0) {
-        alert("請先點擊『靈性洗牌』按鈕！");
-        return;
-    }
-
+    if (currentSpreadCards.length === 0) return;
     const cardElement = document.getElementById(`tarot-card-${index}`);
     const backElement = document.getElementById(`tarot-back-${index}`);
     const cardData = currentSpreadCards[index];
@@ -193,31 +178,101 @@ function handleCardClick(index) {
     const slotTitle = spreads[spreadType][index].title;
 
     if (!flippedState[index]) {
-        // 動態將資料塞入牌面
         const isUpright = cardData.orientation === "正位";
         backElement.innerHTML = `
-            <div class="card-name">${cardData.name}</div>
-            <div class="card-orient" style="color: ${isUpright ? '#1b5e20' : '#b71c1c'};">
-                ${cardData.orientation}
-            </div>
+            <div class="card-name" style="font-size:0.75rem;">${cardData.name}</div>
+            <div class="card-orient" style="color: ${isUpright ? '#1b5e20' : '#b71c1c'}; font-size:0.65rem;">${cardData.orientation}</div>
         `;
-
         cardElement.classList.add('flipped');
         flippedState[index] = true;
     }
 
-    // 不論是剛翻牌還是重複點擊，都會在下方看板秀出該位置的「深度心法解讀」
     const currentKeywords = cardData.orientation === "正位" ? cardData.upright : cardData.reverse;
-    
     document.getElementById('interpretation-zone').innerHTML = `
-        <h3>位置解讀：${slotTitle}</h3>
-        <p><strong>對應牌卡：</strong>${cardData.name} (${cardData.orientation})</p>
-        <div class="active-detail">
-            <strong>大師心法提示：</strong><br>${currentKeywords}
-        </div>
-        <p style="font-size:0.7rem; color:#777; margin-top:8px; text-align:right;">* 再次點擊卡牌可重複查看此提示</p>
+        <h3>位置：${slotTitle}</h3>
+        <p><strong>牌名：</strong>${cardData.name} (${cardData.orientation})</p>
+        <div class="active-detail"><strong>基礎牌意：</strong>${currentKeywords}</div>
     `;
 }
 
-// 初始化
+// ==================== 核心：OpenRouter 香港免 VPN 直連解牌 ====================
+async function callAIInterpretation() {
+    const apiKey = document.getElementById('api-key-input').value.trim();
+    const question = document.getElementById('client-question').value.trim();
+    
+    if (!apiKey) {
+        alert("請先在網頁最上方輸入你的 OpenRouter API Key！");
+        return;
+    }
+    if (currentSpreadCards.length === 0) {
+        alert("請先點擊『靈性洗牌』進行抽牌！");
+        return;
+    }
+
+    const responseZone = document.getElementById('ai-response-zone');
+    const contentDiv = document.getElementById('ai-content');
+    
+    responseZone.style.display = 'block';
+    contentDiv.innerHTML = "🔮 數位大師正在香港雲端節點冥想、感應磁場、組織廣東話解牌語言中，請稍候 10-15 秒...";
+
+    const spreadType = document.getElementById('spread-select').value;
+    let cardDetailsText = "";
+    currentSpreadCards.forEach((card, idx) => {
+        const slotTitle = spreads[spreadType][idx].title;
+        cardDetailsText += `位置：${slotTitle}，抽到卡牌：${card.name} (${card.orientation})\n`;
+    });
+
+    // 系統提示詞：將靈魂與語氣注入 AI 占卜大師
+    const systemPrompt = `你是一位專業且極具同理心的香港本土塔羅占卜大師。
+你說話的風格必須完全使用道地的香港廣東話口語（香港話），語氣要溫暖、像朋友聊天一樣親切，同時具有深刻的心理與情感洞察力。
+
+【核心用字與風格規範】：
+1. 必須多使用香港人日常情感口語，例如：「為你問既係...問題」、「雖然係...但我都會開一個牌局睇吓...」、「呢張牌顯示你哋...」、「有啲阻礙」、「好似有互動」、「抽倒嘅係...」、「一時衝動聯絡，一時又縮返」、「估嚟估去」、「總括而言」、「建議你可以再主動啲打破呢個關口」。
+2. 結構要求：
+   - 第一段開場白：針對客人的問題進行溫暖、貼心的廣東話開場，告訴他你會如何看這個牌局。
+   - 中間解牌段落：每張牌獨立成段，開頭必須使用「🃏」符號，逐一將卡牌的「名稱」、「正逆位」與「牌陣位置」融合，講出通俗易懂、富有情感的人性化分析。不要使用死板的牌意背誦，要融入客人的情境中。
+   - 最後一段：以「總括而言」開頭，給出一個具體、溫暖且有建設性的行動建議。`;
+
+    const userPrompt = `問卜者的問題：${question || "未提供具體問題，請做綜合心理與運勢導引。"}
+
+抽出的卡牌資料：
+${cardDetailsText}
+
+請為他撰寫一篇充滿人情味、結構清晰的廣東話塔羅牌局深度解讀。`;
+
+    try {
+        // 使用 OpenRouter 香港直連網址
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`,
+                'HTTP-Referer': 'https://my-tarot-app.vercel.app', 
+                'X-Title': 'Hong Kong Tarot App'
+            },
+            body: JSON.stringify({
+                // 使用性價比最高、速度飛快且支援廣東話的最新 Google Gemini 2.5 Flash
+                model: 'google/gemini-2.5-flash', 
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: userPrompt }
+                ],
+                temperature: 0.7
+            })
+        });
+
+        const data = await response.json();
+        if (data.choices && data.choices[0]) {
+            contentDiv.innerHTML = data.choices[0].message.content;
+        } else {
+            console.error(data);
+            contentDiv.innerHTML = "❌ 哎呀，API 傳回了錯誤。請確認你的 OpenRouter 帳戶是否有足夠餘額，或 Key 是否輸入正確。";
+        }
+    } catch (error) {
+        console.error(error);
+        contentDiv.innerHTML = "❌ 網路連線失敗，請確認你的 iPhone 網路狀態後再試一次！";
+    }
+}
+
+// 頁面初始化
 window.onload = initSpreadLayout;
